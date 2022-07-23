@@ -8,14 +8,16 @@
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
 <meta name="keywords" content="js,wxss,wxml">
+<meta name="description" content="&amp;emsp;&amp;emsp;大一第二学期上了个移动应用开发与设计，大作业让我们设计一个小程序，此时我妹刚刚开始学习数字字母，我便想到做一个儿童学习小程序。 1 小程序介绍小程序分为四个板块：  ABC 123 小小画家 恐龙百科  1.1 ABC学习英文字母。分别显示26个英文字母卡片并附带发音音频，用户点击时可以进行发音教学。此页面用了audio媒体组件。 1.2 123学习算数。用户在此界面上可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序Babymaster宝宝大师">
 <meta property="og:url" content="https://christianlsl.github.io/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/index.html">
 <meta property="og:site_name" content="Christian&#39;s Blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;大一第二学期上了个移动应用开发与设计，大作业让我们设计一个小程序，此时我妹刚刚开始学习数字字母，我便想到做一个儿童学习小程序。 1 小程序介绍小程序分为四个板块：  ABC 123 小小画家 恐龙百科  1.1 ABC学习英文字母。分别显示26个英文字母卡片并附带发音音频，用户点击时可以进行发音教学。此页面用了audio媒体组件。 1.2 123学习算数。用户在此界面上可以">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/07/12/WBlRn7JCuFEULAh.jpg">
 <meta property="article:published_time" content="2022-07-11T03:46:01.000Z">
-<meta property="article:modified_time" content="2022-07-12T07:15:22.198Z">
+<meta property="article:modified_time" content="2022-07-23T02:10:02.196Z">
 <meta property="article:author" content="lsl">
 <meta property="article:tag" content="微信小程序">
 <meta name="twitter:card" content="summary">
@@ -358,7 +360,29 @@
                     </div>
 
                     <article class="trm-card trm-publication">
-                        
+                        <p>&emsp;&emsp;大一第二学期上了个移动应用开发与设计，大作业让我们设计一个小程序，此时我妹刚刚开始学习数字字母，我便想到做一个儿童学习小程序。</p>
+<h1 id="1-小程序介绍"><a href="#1-小程序介绍" class="headerlink" title="1 小程序介绍"></a>1 小程序介绍</h1><p>小程序分为四个板块：</p>
+<ul>
+<li>ABC</li>
+<li>123</li>
+<li>小小画家</li>
+<li>恐龙百科</li>
+</ul>
+<h2 id="1-1-ABC"><a href="#1-1-ABC" class="headerlink" title="1.1 ABC"></a>1.1 ABC</h2><p><strong>学习英文字母</strong>。分别显示26个英文字母卡片并附带发音音频，用户点击时可以进行发音教学。此页面用了audio媒体组件。</p>
+<h2 id="1-2-123"><a href="#1-2-123" class="headerlink" title="1.2 123"></a>1.2 123</h2><p><strong>学习算数</strong>。用户在此界面上可以通过苹果来模拟10以内简单数字的加法，并输入答案，通过后台判断是否正确，并会给予震动反馈。此页面用了form&amp;input表单组件和wx.vibrateShort()振动api。</p>
+<h2 id="1-3-小小画家"><a href="#1-3-小小画家" class="headerlink" title="1.3 小小画家"></a>1.3 小小画家</h2><p><strong>自由绘画</strong>。用户可以选择钢笔或毛笔、红色或蓝色以及橡皮擦。此页面用了canvas画图组件，但未使用书上的代码，通过在网上学习，使用了wx.createContext()和wx.drawCanvas()，避免了编辑器中代码上的横线。</p>
+<h2 id="1-4-恐龙百科"><a href="#1-4-恐龙百科" class="headerlink" title="1.4 恐龙百科"></a>1.4 恐龙百科</h2><p><strong>恐龙卡片学习</strong>。此页面与“ABC”页面的wxml和js代码基本类似，原理相同。</p>
+<h1 id="2-遇到的问题"><a href="#2-遇到的问题" class="headerlink" title="2 遇到的问题"></a>2 遇到的问题</h1><ol>
+<li>制作字母卡片时，最开始打算用<view>显示26次，但是过于冗杂，因此想到了wx:for来循环，只需把数据储存在js数组里，前端几行代码调用即可。</view></li>
+<li>学习canvas组件时，可惜最新的canvas-2d资料过于少，而且官方没有详细介绍，偶然了解到其和html中的api语法一样，可惜时间不足以我去学习，待以后改善。</li>
+<li>苹果表示数字的功能，一开始想在wxml里直接wx：for渲染，但是发现似乎无法指定下标，因此换了一种方式：在js中创建苹果数组，再在前端渲染。</li>
+<li>完成作品后想要上传线上版本至微信，但图片占用空间超过2048kb限制，因此开通了云开发，并把图片和音频储存在了云空间内，现已成功上线。故在微信搜索“BabyMaster宝宝大师”即可使用，或者扫一扫下方小程序码。<br><img src="/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/gh_ad7cec3d5bfb_430%20(1).jpg" alt="小程序码"></li>
+</ol>
+<ul>
+<li><strong>具体源代码</strong>可以前往 <a target="_blank" rel="noopener" href="https://github.com/christianlsl/Babymaster"><em>https://github.com/christianlsl/Babymaster</em></a> 查看。</li>
+</ul>
+<h1 id="3-小程序部分页面截图"><a href="#3-小程序部分页面截图" class="headerlink" title="3 小程序部分页面截图"></a>3 小程序部分页面截图</h1><p><img src="/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/1.png" alt="小程序码"><br><img src="/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/2.png" alt="小程序码"><br><img src="/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/3.png" alt="小程序码"><br><img src="/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/4.png" alt="小程序码"><br><img src="/2022/07/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8FBabymaster%E5%AE%9D%E5%AE%9D%E5%A4%A7%E5%B8%88/5.png" alt="小程序码"></p>
+
                     </article>
 
                     <!-- blog -->
