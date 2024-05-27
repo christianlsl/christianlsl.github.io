@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Data Base 2 Review</title>
+    <link href="/2024/05/27/Data-Base-2-Review/"/>
+    <url>/2024/05/27/Data-Base-2-Review/</url>
+    
+    <content type="html"><![CDATA[<h3 id="五">五</h3><p>函数依赖</p><p>数据冗余，操作异常</p><p>1NF,2NF,3NF,BCNF</p><p>无损分解</p><h3 id="七">七</h3><p>规划</p><ul><li>输出：可行性分析报告+数据库系统规划纲要</li></ul><p>需求分析（数据字典，数据流）</p><ul><li>输入：信息需求+处理需求</li><li>输出：需求说明书</li></ul><p>概念设计</p><ul><li>输入：DFD</li><li>输出：分ER图 -&gt; 总ER图</li><li>步骤：<ul><li>进行数据抽象,设计局部概念模式</li><li>将局部概念模式综合成全局概念模式</li><li>评审</li></ul></li></ul><p>逻辑设计</p><ul><li>输入：<ul><li>独立于DBMS的概念模式</li><li>处理需求</li><li>约束条件</li><li>DBMS特性</li></ul></li><li>输出：<ul><li>DBMS可处理的模式</li><li>子模式</li><li>应用程序设计指南</li><li>物理设计指南</li></ul></li></ul><p>物理设计</p><ul><li>输入：基本数据模型</li><li>输出：物理结构</li><li>步骤：<ul><li>存储记录结构设计</li><li>确定数据存放位置</li><li>存取方法的设计</li><li>完整性和安全性考虑</li><li>程序设计</li></ul></li></ul><h3 id="八">八</h3><p>数据库恢复</p><p>事务ACID</p><p>数据库并发（两种锁，活死锁，可串行化）</p><p>数据库完整性（3静态，1动态）</p><p>数据库安全</p><h3 id="九">九</h3><p>物理上分散，逻辑上集中</p><p>数据分片，数据分配</p><p>对象联系图，SQL（select出现在任意位置，表要起个名）</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>database2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Computer System Architecture Review</title>
     <link href="/2024/05/17/Computer-System-Architecture-Review/"/>
     <url>/2024/05/17/Computer-System-Architecture-Review/</url>
