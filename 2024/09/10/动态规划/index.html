@@ -13,33 +13,27 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="LSL">
+  <meta name="author" content="lsl">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Task 1 4 paragraphs 1. introduction  paraphrase the question  2. overview  the main, general things 2 sentences, 2 points  3. details 4. details no conclusion! 4 similar chart  line gr">
+    <meta name="description" content="动态规划 0-1背包  二维dp  先遍历物品还是先遍历背包重量都可以   image-20240910092836809   一维dp  背包容量必须倒序遍历，保证物品i只被放入一次 123456for(int i &#x3D; 0; i &lt; weight.size(); i++) &amp;#123; &#x2F;&#x2F; 遍历物品    for(int j &#x3D; bagWeight; j &amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IELTS_Writing">
-<meta property="og:url" content="http://example.com/2024/08/13/IELTS-Writing/index.html">
+<meta property="og:title" content="动态规划">
+<meta property="og:url" content="http://example.com/2024/09/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Task 1 4 paragraphs 1. introduction  paraphrase the question  2. overview  the main, general things 2 sentences, 2 points  3. details 4. details no conclusion! 4 similar chart  line gr">
+<meta property="og:description" content="动态规划 0-1背包  二维dp  先遍历物品还是先遍历背包重量都可以   image-20240910092836809   一维dp  背包容量必须倒序遍历，保证物品i只被放入一次 123456for(int i &#x3D; 0; i &lt; weight.size(); i++) &amp;#123; &#x2F;&#x2F; 遍历物品    for(int j &#x3D; bagWeight; j &amp;g">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240730133751464.png">
-<meta property="og:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240804151655848.png">
-<meta property="og:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240801150234197.png">
-<meta property="og:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240802145717913.png">
-<meta property="og:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240802150240500.png">
-<meta property="og:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240803140936287.png">
-<meta property="article:published_time" content="2024-08-13T13:30:29.000Z">
-<meta property="article:modified_time" content="2024-09-10T08:35:28.867Z">
+<meta property="og:image" content="http://example.com/2024/09/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-20240910092836809.png">
+<meta property="article:published_time" content="2024-09-10T08:39:11.000Z">
+<meta property="article:modified_time" content="2024-09-10T08:39:54.417Z">
 <meta property="article:author" content="LSL">
-<meta property="article:tag" content="IELTS">
-<meta property="article:tag" content="writing">
+<meta property="article:tag" content="Dynamic Programming">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2024/08/13/IELTS-Writing/image-20240730133751464.png">
+<meta name="twitter:image" content="http://example.com/2024/09/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-20240910092836809.png">
   
   
   
-  <title>IELTS_Writing - Hexo</title>
+  <title>动态规划 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="IELTS_Writing"></span>
+            <span id="subtitle" data-typed-text="动态规划"></span>
           
         </div>
 
@@ -216,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-13 21:30" pubdate>
-          2024年8月13日 晚上
+        <time datetime="2024-09-10 16:39" pubdate>
+          2024年9月10日 下午
         </time>
       </span>
     
@@ -228,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          315 字
+          310 字
         
       </span>
     
@@ -276,370 +270,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">IELTS_Writing</h1>
+            <h1 id="seo-header">动态规划</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="task-1">Task 1</h1>
-<h3 id="paragraphs">4 paragraphs</h3>
-<h4 id="introduction">1. introduction</h4>
-<ul>
-<li>paraphrase the question</li>
-</ul>
-<h4 id="overview">2. overview</h4>
-<ul>
-<li>the main, general things</li>
-<li>2 sentences, 2 points</li>
-</ul>
-<h4 id="details">3. details</h4>
-<h4 id="details-1">4. details</h4>
-<p><strong>no conclusion!</strong></p>
-<h2 id="similar-chart">4 similar chart</h2>
+                <h2 id="动态规划">动态规划</h2>
+<h3 id="背包">0-1背包</h3>
 <ol type="1">
-<li>line graph</li>
-<li>bar chart</li>
-<li>pie chart</li>
-<li>table</li>
-</ol>
-<h2 id="mixed-chart">mixed chart</h2>
-<h4 id="describe">describe</h4>
-<ol type="1">
-<li><p>one main feature in each chart</p></li>
-<li><p>describe specific numbers for each chart separately</p></li>
-</ol>
-<h4 id="details-paragraph">details paragraph</h4>
-<h5 id="key-phrases">key phrases</h5>
+<li><p>二维dp</p>
 <ul>
-<li>According to the bar chart / Looking at the ... pie chart, ...</li>
-</ul>
-<h2 id="diagram---comparing">Diagram - comparing</h2>
-<h3 id="overview-1">overview</h3>
-<p>main changes and unchanged places</p>
-<h3 id="phrases">phrases</h3>
-<ul>
-<li>existing plan <span class="math inline">\(\rightarrow\)</span>
-current layout</li>
-<li>there will no longer be</li>
-<li>there will be achieved by removing</li>
-<li>will be installed/replaced</li>
-<li>when the building work has been done</li>
-</ul>
-<h2 id="flow-diagram---process">Flow Diagram - process</h2>
-<h3 id="step">step</h3>
-<ol type="1">
-<li>Overview: how many steps and main materials</li>
-<li>Details: each step in the process</li>
-</ol>
-<h3 id="steps-language">'steps' language</h3>
-<ul>
-<li><p>it requires five stages / consists of four distinct
-stages</p></li>
-<li><p>raw materials</p></li>
-<li><p>at the first stage in the process</p></li>
-<li><p>the process begin with</p></li>
-<li><p>secondly, finally</p></li>
-<li><p>the second step involves</p></li>
-<li><p>next, then, after that</p></li>
-<li><p>at the following/third stage</p></li>
-</ul>
-<h3 id="passive-verbs">passive verbs</h3>
-<ul>
-<li><p>e.g. glass is visited</p></li>
-<li><p>使用passive verbs表示下一过程</p>
+<li><p>先遍历物品还是先遍历背包重量都可以</p>
 <figure>
-<img src="/2024/08/13/IELTS-Writing/image-20240730133751464.png" srcset="/img/loading.gif" lazyload alt="image-20240730133810390">
-<figcaption aria-hidden="true">image-20240730133810390</figcaption>
+<img src="/2024/09/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-20240910092836809.png" srcset="/img/loading.gif" lazyload alt="image-20240910092836809">
+<figcaption aria-hidden="true">image-20240910092836809</figcaption>
 </figure></li>
-</ul>
-<h2 id="good-phases">good phases</h2>
-<ol type="1">
-<li>by far the most important ... over the period shown.</li>
-<li>in terms of ...</li>
-<li>by contrast</li>
-<li>a negligible amount</li>
-<li>sth. overtake / surpass sth.</li>
-<li>rise dramatically to a peak of<br>
-</li>
-<li>remain at this level</li>
-<li>respectively</li>
-<li>rise by a a similar amount</li>
-<li>sales figures</li>
-<li>approximately / close to</li>
-<li>the equivalent figure for</li>
-<li>company/year(2013...) <strong>saw</strong> an increase in/a rise
-of</li>
-<li>than their New Zealand <strong>counterparts</strong></li>
-<li>sth. <strong>accounted for</strong> the highest proportion</li>
-<li>the second most visited country</li>
-<li>ranked fifth</li>
-<li>despite falling numbers</li>
-<li>be in the majority/minority(the majority of ...)</li>
-<li>to be precise</li>
-<li>a mere 15 people(a mere = only / a full /...)</li>
-<li>增加：increase/raise/go up/grow up+X times</li>
-<li>减少：decrease/reduce/decline/drop/go down+X times</li>
-<li>The total output of industry in 2003 was 40 times as high as
-<strong>that of</strong> 1970.</li>
-<li>be double / triple that of / the number of...</li>
-<li>someone spent half as much in relative terms on sth. as other
-one.</li>
+</ul></li>
+<li><p>一维dp</p>
+<ul>
+<li><p>背包容量必须倒序遍历，保证物品i只被放入一次</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) &#123; <span class="hljs-comment">// 遍历物品</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = bagWeight; j &gt;= weight[i]; j--) &#123; <span class="hljs-comment">// 遍历背包容量</span><br>        dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>必须先遍历物品再遍历容量，否则同一物品会被多次放入</p></li>
+</ul></li>
 </ol>
-<h1 id="task2">Task2</h1>
-<h2 id="type">Type</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Group1 - opinion</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>agree/disagree</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>discuss both views and give your opinion</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>positive/negative development</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>advantages outweigh the disadvantages?</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Group2 - analysis</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>Problems/Causes/Reasons and Solutions</td>
-</tr>
-</tbody>
-</table>
-<h2 id="group1---opinion">Group1 - opinion</h2>
-<h3 id="simons-structure">Simon’s Structure</h3>
-<h4 id="introduction-1">Introduction</h4>
-<p>(background)</p>
-<p>I strongly hold that (our response).</p>
-<h4 id="paragraph-1">Paragraph 1</h4>
-<p>On the one hand, I believe that ...</p>
-<p>Firstly,secondly,finally...</p>
-<p>To be more specific, (fact 1-2);</p>
-<p>Not to mention that, (fact 1-3).</p>
-<h5 id="exemplification">Exemplification</h5>
-<p>Furthermore, the fact that (point 2 mid level) indicates that (our
-response).</p>
-<p>Take the case of (character), who / which (process). As a result,
-(result).</p>
-<p>Had it not been for sth.(process paraphrase), (character) would never
-(result paraphrase).</p>
-<h4 id="paragraph-2">Paragraph 2</h4>
-<p>However,...</p>
-<p>The main reason is that...</p>
-<p>Another key benefit of ... is ...</p>
-<p>A final point is that ...</p>
-<h5 id="concession">Concession</h5>
-<p>Nevertheless, a voice arises that (<strong>opposite</strong> response
-and point in grand <strong>opening</strong>).</p>
-<p>Ironically, (facts against opposite detail).</p>
-<p>Therefore, (point 3).</p>
-<h4 id="conclusion">Conclusion</h4>
-<p>In conclusion, I disagree with the view that...</p>
-<h2 id="group2---analysis">Group2 - analysis</h2>
-<h3 id="structure">Structure</h3>
+<h3 id="完全背包">完全背包</h3>
+<p><strong>每件物品都有无限个（也就是可以放入背包多次）</strong>，求解将哪些物品装入背包里物品价值总和最大。</p>
 <ol type="1">
-<li>introduction</li>
-<li>causes</li>
-<li>solutions</li>
-<li>conclusion: summarize the problem and steps</li>
+<li><p>一维dp</p>
+<ul>
+<li><p>两个for循环嵌套顺序是无所谓的(因为纯完全背包求得装满背包的最大价值是多少，和凑成总和的元素有没有顺序没关系)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; weight.<span class="hljs-built_in">size</span>(); i++) &#123; <span class="hljs-comment">// 遍历物品</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = weight[i]; j &lt;= bagWeight ; j++) &#123; <span class="hljs-comment">// 遍历背包容量</span><br>        dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>求凑出来的方案个数</p></li>
 </ol>
-<h3 id="paragraphs-1">4 Paragraphs</h3>
-<h4 id="introduction-2">introduction</h4>
-<ol type="1">
-<li>rewrite the problem</li>
-<li>"There are a variety of possible reasons for this, but steps can
-definitely be taken to tackle the problem."</li>
-</ol>
-<h4 id="causes">causes</h4>
-<h5 id="template">template</h5>
-<p>In my opinion, three main factors are blame for ...</p>
-<h6 id="连接词">连接词</h6>
 <ul>
-<li>first</li>
-<li>secondly</li>
-<li>...</li>
-</ul>
-<h4 id="solutions">solutions</h4>
-<h5 id="template-1">template</h5>
-<p>... can certainly be improved.</p>
-<p>(solution与三个causes一一对应)</p>
-<h6 id="连接词-1">连接词</h6>
-<ul>
-<li>the change must start with ...</li>
-<li>Also,...</li>
-<li>At the same time,...</li>
-</ul>
-<h4 id="conclusion-1">conclusion</h4>
-<h5 id="image-20240804151655848"><img src="/2024/08/13/IELTS-Writing/image-20240804151655848.png" srcset="/img/loading.gif" lazyload alt="image-20240804151655848"></h5>
-<h3 id="good-phrases">good phrases</h3>
-<ul>
-<li>steps can be taken to tackle the problem</li>
-<li>three main factors are to blame</li>
-<li>face discipline problems</li>
-<li>play an important role in</li>
-</ul>
-<h2 id="观点库">观点库</h2>
-<figure>
-<img src="/2024/08/13/IELTS-Writing/image-20240801150234197.png" srcset="/img/loading.gif" lazyload alt="image-20240801150234197">
-<figcaption aria-hidden="true">image-20240801150234197</figcaption>
-</figure>
-<h3 id="technology">technology</h3>
-<ul>
-<li>The rapid economic progress has <strong>changed China beyond
-recognition</strong>.</li>
-<li>study whenever and whatever they want</li>
-<li>institute should supplement traditional teaching with the use of
-technology</li>
-</ul>
-<h3 id="cities">Cities</h3>
-<ul>
-<li>cities offer greater employment possibilities and a higher standard
-of living</li>
-<li>people migrate to cities from countryside</li>
-<li>life in cities has its drawbacks</li>
-<li>the cost of living is higher then in rural areas</li>
-<li>cities lack a sense of community</li>
-</ul>
-<h3 id="education">Education</h3>
-<h4 id="advantages">advantages</h4>
-<ul>
-<li><p>They can contribute positively to society</p></li>
-<li><p>schools aim to teach young people moral values such as tolerance
-and sharing</p></li>
-<li><p>schools prepare children to be members of society</p></li>
-<li><p>the best universities employ teachers who are experts in their
-fields</p></li>
-<li><p>Qualifications gained abroad/A degree can open the door to better
-job opportunities</p></li>
-<li><p>broaden students' horizons</p></li>
-<li><p>skilled workers are needed such as ...</p></li>
-<li><p>Repetitive manual jobs are now almost done by machine</p></li>
-</ul>
-<h4 id="drawbacks">drawbacks</h4>
-<ul>
-<li>students has problems with paperwork such as visa applications</li>
-<li>language barrier</li>
-<li>living alone in an unfamiliar culture can cause homesickness</li>
-</ul>
-<h3 id="environment">Environment</h3>
-<ul>
-<li>The increasing world population is putting pressure on natural
-resources</li>
-</ul>
-<h3 id="family">Family</h3>
-<ul>
-<li><p>Many fathers and mothers share their parenting and domestic
-responsibilities</p></li>
-<li><p>contribute equally to childcare, cooking and cleaning</p></li>
-</ul>
-<h2 id="vinces-structure">Vince's Structure</h2>
-<h3 id="key-elements">Key elements</h3>
-<ol type="1">
-<li>5 paragraphs</li>
-<li>350+ words</li>
-</ol>
-<h3 id="structure-1">Structure</h3>
-<h4 id="argument">Argument</h4>
-<ul>
-<li>The Beginning</li>
-<li>Point 1 + Reasoning</li>
-<li>Point 2 + Exemplification</li>
-<li>Point 3 + Concession</li>
-<li>The End</li>
-</ul>
-<h5 id="tips">tips</h5>
-<ul>
-<li>point尽量偏向宏观，便于拓展</li>
-<li>论点之间的逻辑关系必须紧密流畅</li>
-</ul>
-<h3 id="paragraphs-2">5 paragraphs</h3>
-<h4 id="the-beginning">1. The Beginning</h4>
-<h5 id="template-2">template</h5>
-<p>It is hard to deny that (opposite detail). Such a fact leads
-impressionable people to generate the opinion that (opposite
-response).</p>
-<p>However, such a statement suffers from both logical and factual
-fallacies, and it should be examined meticulously.</p>
-<p>As far as (Point 1), (Point 2) and (Point 3) are concerned, I
-strongly hold that (our response).</p>
-<h5 id="key-phrases-1">key phrases</h5>
-<figure>
-<img src="/2024/08/13/IELTS-Writing/image-20240802145717913.png" srcset="/img/loading.gif" lazyload alt="image-20240802145717913">
-<figcaption aria-hidden="true">image-20240802145717913</figcaption>
-</figure>
-<ul>
-<li><strong>appears</strong> adj.</li>
-<li><strong>simply</strong> due to...</li>
-</ul>
-<h4 id="reasoning">2. Reasoning</h4>
-<h5 id="three-stages">three stages</h5>
-<p>层层递进，宏观<span class="math inline">\(\rightarrow\)</span>微观</p>
-<figure>
-<img src="/2024/08/13/IELTS-Writing/image-20240802150240500.png" srcset="/img/loading.gif" lazyload alt="image-20240802150240500">
-<figcaption aria-hidden="true">image-20240802150240500</figcaption>
-</figure>
-<h5 id="template-3">template</h5>
-<p>First and foremost, (point 1), as (fact 1-1).</p>
-<p>For instance / To illustrate / To be more specific, (fact 1-2);</p>
-<p>In addition / Not to mention that / Furthermore, (fact 1-3).</p>
-<p>(Optional filler: 字数不足补充：summary/conclusion/what if/a small
-example)</p>
-<h5 id="tip">tip</h5>
-<ul>
-<li>所有fact必须服务于point 1，不能跑题</li>
-</ul>
-<h4 id="exemplification-1">3. Exemplification</h4>
-<h5 id="template-4">template</h5>
-<p>Furthermore, the fact that (point 2 mid level) indicates that (our
-response).</p>
-<p>Take the case of (character), who / which (process). As a result,
-(result).</p>
-<p>Had it bot been for (process paraphrase), (character) would never
-(result paraphrase).</p>
-<h5 id="example">Example</h5>
-<figure>
-<img src="/2024/08/13/IELTS-Writing/image-20240803140936287.png" srcset="/img/loading.gif" lazyload alt="image-20240803140936287">
-<figcaption aria-hidden="true">image-20240803140936287</figcaption>
-</figure>
-<h4 id="concession-1">Concession</h4>
-<h5 id="template-5">template</h5>
-<p>Nevertheless, a voice arises that (<strong>opposite</strong> response
-and point in grand <strong>opening</strong>).</p>
-<p>Ironically, (facts against opposite detail).</p>
-<p>Therefore, (point 3).</p>
-<h4 id="ending">Ending</h4>
-<h5 id="template-6">template</h5>
-<p>In a nutshell, I maintain that (response paraphrase of point
-1,2,3).</p>
-<p>Admittedly, as my favorite quote from Leibniz goes, there are no two
-identical leaves in the world. Everyone has their own unique perspective
-and some people may oppose me.</p>
-<p>However, I believe they will compromise after being exposed to my
-article.</p>
-<h5 id="tips-1">tips</h5>
-<ul>
-<li>points的论述禅师必须详细且通顺</li>
+<li><p>如果求组合数就是外层for循环遍历物品，内层for遍历背包。</p></li>
+<li><p>如果求排列数就是外层for遍历背包，内层for循环遍历物品</p></li>
 </ul>
 
                 
@@ -659,7 +325,7 @@ article.</p>
     
       <span class="category-chain">
         
-  <a href="/categories/IELTS/" class="category-chain-item">IELTS</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
 
@@ -674,9 +340,7 @@ article.</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/IELTS/" class="print-no-link">#IELTS</a>
-      
-        <a href="/tags/writing/" class="print-no-link">#writing</a>
+        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
       
     </div>
   
@@ -688,20 +352,20 @@ article.</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>IELTS_Writing</div>
-      <div>http://example.com/2024/08/13/IELTS-Writing/</div>
+      <div>动态规划</div>
+      <div>http://example.com/2024/09/10/动态规划/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>LSL</div>
+          <div>lsl</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月13日</div>
+          <div>2024年9月10日</div>
         </div>
       
       
@@ -733,18 +397,12 @@ article.</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态规划</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/13/IELTS-Speaking/" title="IELTS_Speaking">
-                        <span class="hidden-mobile">IELTS_Speaking</span>
+                      <a href="/2024/08/13/IELTS-Writing/" title="IELTS_Writing">
+                        <span class="hidden-mobile">IELTS_Writing</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
