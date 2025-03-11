@@ -1,0 +1,1456 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lsl">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、导论 计算机系统结构3说法  五大部件：运算器、控制器、存储器、输入输出设备 软件和硬件组成 由人员、数据、设备、持续和规程组成  冯诺伊曼结构  特点：存储程序、运算器为中心、集中控制 ①存储器是按地址访问的顺序线性编址的一维结构，每个单元的位数是固定的 ②指令由操作码和地址码组成 ③指令在存储器中是按其执行顺序存储的，由程序计数器指明每条指令所在单元的地址。 ④在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer System Architecture Review">
+<meta property="og:url" content="http://example.com/2024/05/17/Computer-System-Architecture-Review/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、导论 计算机系统结构3说法  五大部件：运算器、控制器、存储器、输入输出设备 软件和硬件组成 由人员、数据、设备、持续和规程组成  冯诺伊曼结构  特点：存储程序、运算器为中心、集中控制 ①存储器是按地址访问的顺序线性编址的一维结构，每个单元的位数是固定的 ②指令由操作码和地址码组成 ③指令在存储器中是按其执行顺序存储的，由程序计数器指明每条指令所在单元的地址。 ④在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/10/FbGrLRT3QW85YMh.jpg">
+<meta property="article:published_time" content="2024-05-17T00:18:20.000Z">
+<meta property="article:modified_time" content="2024-09-10T10:53:19.144Z">
+<meta property="article:author" content="LSL">
+<meta property="article:tag" content="计算机系统结构">
+<meta property="article:tag" content="期末复习知识点">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/10/FbGrLRT3QW85YMh.jpg">
+  
+  
+  
+  <title>Computer System Architecture Review - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Christianlsl</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://s2.loli.net/2024/09/10/6YBsaQyqWg9SiN5.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Computer System Architecture Review"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        lsl
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-17 08:18" pubdate>
+          2024年5月17日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          66 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Computer System Architecture Review</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一导论">一、导论</h2>
+<h4 id="计算机系统结构3说法">计算机系统结构3说法</h4>
+<ul>
+<li>五大部件：运算器、控制器、存储器、输入输出设备</li>
+<li>软件和硬件组成</li>
+<li>由人员、数据、设备、持续和规程组成</li>
+</ul>
+<h4 id="冯诺伊曼结构">冯诺伊曼结构</h4>
+<ul>
+<li><p>特点：存储程序、运算器为中心、集中控制</p>
+<p>①存储器是按地址访问的顺序线性编址的一维结构，每个单元的位数是固定的</p>
+<p>②指令由操作码和地址码组成</p>
+<p>③指令在存储器中是按其执行顺序存储的，由程序计数器指明每条指令所在单元的地址。</p>
+<p>④在存储器中指令和数据被同等对待</p>
+<p>⑤计算机系统结构以运算器、控制器为中心</p>
+<p>⑥指令、数据均以二进制编码表示，采用二进制运算。</p></li>
+<li><p>现代计算机对冯的改进：</p>
+<ul>
+<li>不变：存储程序</li>
+<li>改变：存储器为中心，总线结构，分散控制</li>
+</ul></li>
+</ul>
+<h4 id="计算机系统层次结构">计算机系统层次结构</h4>
+<ul>
+<li>虚拟计算机：由软件实现的机器。从不同角度所看到的计算机系统属性是不同的。</li>
+</ul>
+<h4 id="系统结构2种定义">系统结构2种定义</h4>
+<ol type="1">
+<li><p>从程序设计者所看到的计算机属性，即概念性结构和功能特性</p></li>
+<li><p>研究软硬件功能分配和对软硬件界面的确定</p></li>
+</ol>
+<h4 id="计算机组成与实现">计算机组成与实现</h4>
+<ol type="1">
+<li>计算机组成：计算机系统结构的逻辑实现</li>
+<li>计算机实现：计算机组成的物理实现</li>
+</ol>
+<h4 id="模拟和仿真">模拟和仿真</h4>
+<p>在某一系统结构上实现另一种系统结构</p>
+<ul>
+<li>模拟：用机器语言程序解释实现程序移植的方法</li>
+<li>仿真：微程序直接解释另一种机器的指令系统</li>
+</ul>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515123824104.png" srcset="/img/loading.gif" lazyload alt="image-20240515123824104">
+<figcaption aria-hidden="true">image-20240515123824104</figcaption>
+</figure>
+<h4 id="加速比">加速比</h4>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515124114407.png" srcset="/img/loading.gif" lazyload alt="image-20240515124114407">
+<figcaption aria-hidden="true">image-20240515124114407</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515124151554.png" srcset="/img/loading.gif" lazyload alt="image-20240515124151554">
+<figcaption aria-hidden="true">image-20240515124151554</figcaption>
+</figure>
+<h4 id="计算机系统结构分类flynn分类">计算机系统结构分类（Flynn分类）</h4>
+<ul>
+<li>SISD:单指令流单数据流 -&gt; 串行计算机</li>
+<li>SIMD:单指令流多数据流 -&gt; 并行处理机</li>
+<li>MISD:多指令流单数据流 -&gt; 无食用价值</li>
+<li>MIMD:多指令流多数据流 -&gt; 多处理机和多计算机</li>
+<li>SPMD:单程序多数据流 -&gt; MIMD的一个子类，基于Cluster</li>
+<li>SIMT:单指令多线程 -&gt; Nvidia 公司提出，GPU</li>
+</ul>
+<h2 id="二处理器">二、处理器</h2>
+<h4 id="cisc-risc">CISC &amp; RISC</h4>
+<ul>
+<li>复杂指令系统CISC
+<ul>
+<li>提供复杂指令来提高性能</li>
+<li>所含指令至少300条，甚至超过500条</li>
+<li>设计目的：用最少的机器语言指令来完成所需的计算任务</li>
+<li>使得硬件越来越复杂，<strong>造价相应提高</strong>，复杂的指令系统不但不容易实现，<strong>还可能降低性能</strong></li>
+</ul></li>
+<li>精简指令系统RISC
+<ul>
+<li>只保留使用频率很高的少量指令</li>
+<li>其他复杂功能通过组合指令（子程序）实现</li>
+<li>提供一些必要的指令以支持OS和高级语言</li>
+</ul></li>
+</ul>
+<h4 id="openmp">OpenMP</h4>
+<ul>
+<li><p>执行模型采用Fork-Join形式和共享内存模型</p></li>
+<li><p>是任务级线程，不是SIMD</p></li>
+<li><p><code>#pragma omp &lt;directive&gt;[clause [[,]clause]…]</code></p></li>
+<li><p>常用的功能指令如下：</p>
+<ul>
+<li><p><code>parallel</code>：用在一个结构块之前，表示这段代码将被多个线程并行执行。</p></li>
+<li><p><code>parallel for</code>：parallel和for指令的结合，也用于for循环语句之前，表示for循环体的代码将被多个线程并行执行，同时具有并行域的产生和任务分配两个功能。</p></li>
+<li><p><code>reduction</code>：执行指定的归约运算。</p></li>
+<li><p><code>single</code>：用在并行域内，表示一段只被单个线程执行的代码。</p></li>
+<li><p><code>critical</code>：用在一段代码临界区之前，保证每次只有一个OpenMP线程进入。</p></li>
+<li><p><code>barrier</code>：用于并行域内代码的线程同步，线程执行到barrier时要停下等待，直到所有线程都执行到barrier时才继续往下执行。</p></li>
+</ul></li>
+<li><p>example</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;omp.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 1000</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> OMP_THREADS 4 <span class="hljs-comment">// CPU OpenMP 线程数</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span>&#123;<br>    <span class="hljs-type">int</span> LINE_FOR_CPU_THREADS = (N + OMP_THREADS - <span class="hljs-number">1</span>) / OMP_THREADS; <span class="hljs-comment">// 定义每个CPU线程计算的行数</span><br>	<span class="hljs-type">int</span> A[N][N]; <span class="hljs-comment">// 定义数组A</span><br>	<span class="hljs-type">int</span> i, j; <span class="hljs-comment">// 随机初始化数组A，每行从下标1开始，第0个元素用于记录该行最大值</span><br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)&#123;<br>                         A[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">1</span>; j &lt; N; j++)&#123;<br>			A[i][j] = <span class="hljs-built_in">rand</span>()%<span class="hljs-number">10</span>;  &#125;  &#125;<br>    <span class="hljs-meta">#<span class="hljs-keyword">pragma</span> omp parallel for num_threads(OMP_THREADS) <span class="hljs-comment">// 启动多线程计算</span></span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; OMP_THREADS; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ThreadIdx: %d\n&quot;</span>, i);<br>        <span class="hljs-type">int</span> k, lineID, sum;<br>        <span class="hljs-type">int</span> line_for_cpu_idx = LINE_FOR_CPU_THREADS * i;<span class="hljs-comment">// 计算该线程的起始计算行号</span><br>        <span class="hljs-keyword">for</span> (lineID = line_for_cpu_idx; lineID &lt; line_for_cpu_idx + LINE_FOR_CPU_THREADS; lineID++) &#123;<br>            <span class="hljs-keyword">if</span> (lineID &gt;= <span class="hljs-number">0</span> &amp;&amp; lineID &lt; N) &#123;<br>                sum = <span class="hljs-number">0</span>;<br>                <span class="hljs-keyword">for</span> (k = <span class="hljs-number">1</span>; k &lt; N; k++) &#123;<br>                    sum += A[lineID][k];<br>                &#125;<br>                A[lineID][<span class="hljs-number">0</span>] = sum;  &#125;  &#125;  &#125;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123; <span class="hljs-comment">// 回到主线程，输出计算结果</span><br>    	<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>        	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, A[i][j]);<br>     	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);  &#125; <br>    &#125;<br><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="cuda">CUDA</h4>
+<h5 id="gpu">GPU</h5>
+<ul>
+<li>专门面对高并发的计算任务（核：小+多）</li>
+<li>基本的运算单元被称为流处理器（SP）。</li>
+<li>多个流处理器、寄存器、缓存和指令控制单元组成 流多处理器（SM）。</li>
+<li>SM是GPU执行指令的基本单位，在同一SM内的SP具有共享的高速一级缓存。整个GPU则是由多组SM、共享二级缓存以及显存控制器等组成。</li>
+</ul>
+<h5 id="cuda编程">CUDA编程</h5>
+<ul>
+<li>CUDA编程基于<strong>SIMD编程模型</strong>。执行核函数之前，用户需要（手动）将数据通过PCI-E通道由内存复制到显存中；核函数执行完毕后，用户再将运算后的数据由显存复制回主机的内存中。</li>
+<li>GPU上执行的代码称为<strong>核函数</strong>（kernel）</li>
+</ul>
+<h5 id="cuda线程的组织">CUDA线程的组织：</h5>
+<ul>
+<li><p><strong>线程</strong>（Thread）：CUDA程序的基本执行单元。每个线程内的指令都会顺序执行。遵循SIMD编程模型，所有的线程都会执行相同的代码或相同代码的不同分支。理论上，所有的线程都是并行执行的，没有先后之分。</p></li>
+<li><p><strong>线程块</strong>（Block）：由一组线程组成。每个线程块内部线程之间可以进行协作，有可以共同访问的共享内存。</p>
+<p>CUDA程序执行时，每个线程块会在GPU上同一个SM中执行，每个线程块内的线程又会以线程束(Wrap)为单位，分组在SM中执行。线程束是GPU在执行时调度的最小单位。大小一般为32。</p></li>
+<li><p><strong>网格</strong>（Grid）：一组线程块的集合。网格里的线程块会被调度到GPU的多个SM上去执行。线程块之间没有同步机制，执行的先后顺序不确定。</p></li>
+</ul>
+<h5 id="cuda核函数">CUDA核函数</h5>
+<ul>
+<li><p>GPU端运行的代码，规定GPU的各个线程访问哪些数据执行什么计算</p></li>
+<li><p>每个核函数对应一个Grid，一个Grid中有一个或多个block,
+一个block中有一个或多个thread</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515140439833.png" srcset="/img/loading.gif" lazyload alt="image-20240515140439833">
+<figcaption aria-hidden="true">image-20240515140439833</figcaption>
+</figure></li>
+</ul>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515140528216.png" srcset="/img/loading.gif" lazyload alt="image-20240515140528216">
+<figcaption aria-hidden="true">image-20240515140528216</figcaption>
+</figure>
+<ul>
+<li><p><code>kernel&lt;&lt;&lt;Dg, Db, Ns, S&gt;&gt;&gt;(param list)</code></p>
+<p><code>Dg</code>：int型或者dim3类型(x,y,z)，定义一个<strong>Grid</strong>中<strong>Block</strong>是如何组织的，如果是int型，则表示一维组织结构</p>
+<p><code>Db</code>：int型或者dim3类型(x,y,z)，定义一个<strong>Block</strong>中<strong>Thread</strong>是如何组织的，如果是int型，则表示一维组织结构</p>
+<p><code>Ns</code>：size_t类型，可缺省，默认为0；
+用于设置每个block除了静态分配的共享内存外，最多能动态分配的共享内存大小，单位为byte。
+0表示不需要动态分配。S：cudaStream_t类型，可缺省，默认为0。
+表示该核函数位于哪个流。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">dim3 <span class="hljs-title">grid</span><span class="hljs-params">(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)</span>, <span class="hljs-title">block</span><span class="hljs-params">(<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>)</span></span>; <br>kernel_name&lt;&lt;&lt;grid, block&gt;&gt;&gt;(...);<br><span class="hljs-comment">//表示一个Grid中有3x2x1=6个Block，在(x,y,z)三个方向上的排布方式分别是3、2、1；</span><br><span class="hljs-comment">//一个Block中有4x3x1=12个Thread，在(x,y,z)三个方向上的排布方式分别是4、3、1。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>内置变量</p>
+<ul>
+<li><p>blockIdx：索引到线程块</p></li>
+<li><p>threadIdx：索引到某个块内的线程</p></li>
+<li><p>blockDim：得到一个块内线程总数</p></li>
+<li><p>gridDim：得到一个格内块总数</p></li>
+</ul>
+<p>n在一维的情况下，计算线程全局id公式为</p>
+<ul>
+<li><strong>线程全局id = blockIdex.x * blockDim.x +
+threadIdx.x</strong></li>
+</ul>
+<p>n在一维的情况下，核函数内的线程总数为</p>
+<ul>
+<li><strong>核函数的线程总数 = gridDim.x * blockDim.x</strong></li>
+</ul></li>
+</ul>
+<h2 id="三存储系统">三、存储系统</h2>
+<h4 id="访问周期和命中率">访问周期和命中率</h4>
+<p><span class="math inline">\(\begin{aligned}&amp;T=HT_1+(1-H)T_2\\&amp;\text{当命中率}H\to1\text{时,}T\to
+T_1\end{aligned}\)</span></p>
+<p>T1：M1存储器的访问周期</p>
+<p>T2：M2存储器的访问周期</p>
+<h4 id="并行存储器">并行存储器</h4>
+<h5 id="高位交叉">高位交叉</h5>
+<ol type="1">
+<li><p>目的：扩大存储容量</p></li>
+<li><p>实现方法：用地址码的高位部分区分存储体号</p></li>
+<li><p>特点：</p>
+<ul>
+<li>具备并行工作的条件：每个存储模块有各自独立的控制部件，包括地址寄存器、地址译码器等，可以独立工作</li>
+<li>编址的连续性：由于程序的连续性和局部性，大部分情况下，指令序列和数据分布在同一个存储模块中。只有当指令序列跨越两个存储模块时，才能并行工作</li>
+<li><strong>扩大容量，未提高速度</strong></li>
+</ul></li>
+</ol>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/20180112210025854.png" srcset="/img/loading.gif" lazyload alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h5 id="低位交叉多体交叉编址">低位交叉(多体交叉编址)</h5>
+<ol type="1">
+<li>目的：提高存储器访问速度</li>
+<li>实现方法：用地址码的低位部分区分存储体号</li>
+<li>虽然多体并行主存系统和单体并行主存系统最大频宽可以相同，但多体地址可以灵活设置，只要是在不同分体中，就能得到比单体更高的频宽。因为程序常有转移出现，使得实际访问地址不一定均匀分布在交叉分体上，致使效率下降。统计表明，采用多体并行主存结构的计算机系统获得的实际频宽约是最大理想频宽的1/3。</li>
+<li>特点：
+<ul>
+<li>存储体的访问周期T<sub>m</sub>，由<em>n</em>个存储体构成的主存储器，各存储体的启动间隔
+$t=T_m/n$</li>
+<li>低位交叉存储器是一种采用<strong>分时工作</strong>工作的并行存储系统。在连续工作的情况下，保持每个存储体速度不变，则整个存储器速度可望提高<em>n</em>倍</li>
+</ul></li>
+</ol>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/20180112210047400.png" srcset="/img/loading.gif" lazyload alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515150131191.png" srcset="/img/loading.gif" lazyload alt="image-20240515150131191">
+<figcaption aria-hidden="true">image-20240515150131191</figcaption>
+</figure>
+<ul>
+<li>存储器的速度不随存储体个数的增加而线性提高，即n个存储体组成的存储器的加速比通常小于n。原因在于访问冲突：取指令时可能发生程序转移，取操作数时存在数据离散性</li>
+</ul>
+<h4 id="堆栈型替换算法">堆栈型替换算法</h4>
+<ul>
+<li><p>基本特点：</p>
+<p>随着分配给程序的主存页面数增加，主存的命中率也提高，至少不下降</p></li>
+<li><p>FIFO不是堆栈型算法，LRU,LFU,OPT是堆栈型</p></li>
+</ul>
+<h4 id="提高主存命中率方法">提高主存命中率方法</h4>
+<h5 id="影响命中率的因素">影响命中率的因素</h5>
+<ol type="1">
+<li>页面替换算法</li>
+<li>页面大小
+<ul>
+<li>页面大小为某个值时，命中率最大</li>
+<li>随页面大小增大，主存页面数减少，页面替换更频繁</li>
+</ul></li>
+<li>主存储器容量
+<ul>
+<li>命中率随主存容量的增加而单调上升，但是梯度逐渐变小</li>
+<li>对于堆栈型：容量增大，页面数增加，命中率提高</li>
+<li>非堆栈：不一定单调上升，但总趋势上升</li>
+</ul></li>
+</ol>
+<h4 id="cache一致性问题">Cache一致性问题</h4>
+<ol type="1">
+<li><p>造成Cache与主存不一致的原因：</p>
+<ul>
+<li>CPU写Cache，但没有立即写主存</li>
+<li>IO处理机或IO设备写主存，但没有写Cache</li>
+</ul></li>
+<li><p>Cache的更新算法</p>
+<ul>
+<li>写直达法，WT(Write-through)</li>
+</ul>
+<p>​ CPU的数据写入Cache时，同时也写入主存</p>
+<ul>
+<li>写回法，WB (Write-Back)</li>
+</ul>
+<p>​
+CPU的数据只写入Cache，不写入主存，仅当替换时，才把修改过的Cache块写回主存</p>
+<p>​
+Cache块表中为每一块设置一个修改位，初值为0。当块中任何一个字被修改时，修改位被置为1。</p></li>
+</ol>
+<h4 id="cache性能计算">Cache性能计算</h4>
+<ol type="1">
+<li>平均存储器访问时间 = 命中时间 + 不命中率 * 不命中代价</li>
+<li>CPU时间 = IC * (CPI + 不命中率 * 存储器存取次数/指令数 * 不命中代价)
+* T</li>
+</ol>
+<h4 id="cache命中率相关因素">Cache命中率相关因素</h4>
+<ol type="1">
+<li><p>Cache的命中率随它的容量的增加而提高</p></li>
+<li><p>组相联映像方式的Cache中，Cache容量一定时，块的大小对命中率的影响非常敏感</p>
+<ul>
+<li><p>块很小时，命中率H很低</p></li>
+<li><p>随着块大小的增加，程序的空间局部性起作用，同一块中的数据的利用率提高，块命中率H提高</p></li>
+<li><p>达到最大值以后，命中率H随块大小的增加反而减少。当块非常大时，程序的局部性减弱</p></li>
+</ul></li>
+<li><p>Cache命中率与组数的关系</p>
+<p>在组相联映像的Cache中：</p>
+<ul>
+<li><p>随着组数的增加， Cache的命中率降低</p></li>
+<li><p>当组数不太大时(512组以下)，命中率降低得相当少</p></li>
+<li><p>当组数超过一定数量时，命中率下降非常快</p></li>
+</ul></li>
+<li><p><strong>相联度（每组块数）不是越大，命中率越高</strong></p></li>
+</ol>
+<h4 id="虚拟存储器的工作方式特点">虚拟存储器的工作方式、特点</h4>
+<p>虚拟存储器是指“主存-辅存”层次，它能使该层次具有辅存容量、接近主存的等效速度和辅存的每位成本，使程序员可以按比主存大得多的虚拟存储空间编写程序（即按虚存空间编址）</p>
+<p>Cache的主要作用是弥补主存和CPU之间的速度差距，因此它的管理部件是用硬件实现的，并对程序员透明。</p>
+<p>但虚拟存储器的主要作用是弥补主存和辅存之间的容量差距，因此它的管理部件基本上靠软件，适当结合硬件来实现，对系统程序员也不是透明的。</p>
+<h2 id="四流水线">四、流水线</h2>
+<h4 id="先行控制">先行控制</h4>
+<ul>
+<li><p>使分析和执行部件分别连续不断地运行，使部件空闲状态减至最低</p></li>
+<li><p>采用技术:</p>
+<ul>
+<li><p>缓冲技术</p></li>
+<li><p>预处理技术</p></li>
+</ul></li>
+<li><p>先行控制与重叠区别：分析和执行部件可同时处理两条不相邻指令</p></li>
+</ul>
+<h4 id="流水技术特点">流水技术特点</h4>
+<ol type="1">
+<li>可以划分为若干互有联系的子过程（功能段）。每个功能段由专用功能部件实现。</li>
+<li>实现功能段所需的时间应尽可能相等，避免因不等产生处理瓶颈，造成“断流”。</li>
+<li>形成流水线处理，需要一段准备时间，称为“通过时间”。只有在此之后流水过程才能稳定。</li>
+<li>指令流不能顺序执行时，会使流水过程中断；再形成流水过程，则需经过一段时间。不应经常“断流”，否则效率不高。</li>
+<li>流水线技术适用于大量重复的程序过程，只有输入端能连续提供服务，流水线效率才能够得到充分发挥。</li>
+</ol>
+<h4 id="流水线时空图">流水线时空图</h4>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515211925332.png" srcset="/img/loading.gif" lazyload alt="image-20240515211925332">
+<figcaption aria-hidden="true">image-20240515211925332</figcaption>
+</figure>
+<h4 id="流水线性能指标">流水线性能指标</h4>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240515212453231.png" srcset="/img/loading.gif" lazyload alt="image-20240515212453231">
+<figcaption aria-hidden="true">image-20240515212453231</figcaption>
+</figure>
+<h5 id="吞吐率">1. 吞吐率</h5>
+<ul>
+<li><p>单位时间内流水线能够处理的任务数</p></li>
+<li><p><span class="math inline">\(\mathrm{TP}=\frac{n}{T}=\frac{n}{m\times\Delta
+t_{0}+(n-1)\times\Delta t_{0}}=\frac{1}{\Delta
+t_{0}\times\left(1+\frac{m-1}{n}\right)}=\frac{\mathrm{TP}_{\max}}{1+\frac{m-1}{n}}\)</span></p></li>
+</ul>
+<p>​ 若各段时间不相等：</p>
+<ul>
+<li><span class="math inline">\(\mathrm{TP}=\frac n{\sum_{i=1}^m\Delta
+t_i+(n-1)\Delta t_j}\)</span>， t<sub>j</sub>为最长的一段时间</li>
+</ul>
+<h5 id="加速比-1">2. 加速比</h5>
+<ul>
+<li><p>m段流水线的速度与等效的非流水线的速度之比称为加速比</p></li>
+<li><p><span class="math inline">\(S=\frac{T_\text{非流水}}{T_\text{流水}}=\frac{mn\Delta
+t_0}{m\Delta t_0+(n-1)\Delta t_0}=\frac{mn}{m+n-1}=\frac
+m{1+\frac{m-1}n}\)</span></p></li>
+</ul>
+<p>​ 若各段时间不相等：</p>
+<ul>
+<li><span class="math inline">\(S=\frac{n\sum_{i=1}^m\Delta
+t_i}{\sum_{i=1}^m\Delta t_i+(n-1)\Delta t_j}\)</span></li>
+</ul>
+<h5 id="效率">3. 效率</h5>
+<ul>
+<li><p>工作时间的时空区与流水线中各段总的时空区之比</p></li>
+<li><p><span class="math inline">\(E=\frac{nm\Delta t}{m(m+n-1)\Delta
+t}=\frac n{m+n-1}=\frac{S_p}m=T_p\Delta t\)</span></p>
+<p>若各段时间不相等：</p></li>
+<li><p><span class="math inline">\(E=\frac{n\sum_{i=1}^m\Delta
+t_i}{m\biggl[\sum_{i=1}^m\Delta t_i+(n-1)\Delta
+t_j\biggr]}=\frac{n\text{ 个任务占用的时空区}}{m\text{
+个段总的时空区}}\)</span></p></li>
+</ul>
+<h4 id="非线性流水线调度">非线性流水线调度</h4>
+<ul>
+<li><p>因功能段使用冲突，调度相对复杂</p></li>
+<li><p>预约表</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516075824819.png" srcset="/img/loading.gif" lazyload alt="image-20240516075824819">
+<figcaption aria-hidden="true">image-20240516075824819</figcaption>
+</figure></li>
+<li><p>禁止向量</p>
+<p>F=（8，6，5，1）</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516075840659.png" srcset="/img/loading.gif" lazyload alt="image-20240516075840659">
+<figcaption aria-hidden="true">image-20240516075840659</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516075850163.png" srcset="/img/loading.gif" lazyload alt="image-20240516075850163">
+<figcaption aria-hidden="true">image-20240516075850163</figcaption>
+</figure></li>
+<li><p>冲突向量</p>
+<p>C0 =（10110001）</p></li>
+<li><p>状态转换图</p>
+<ol type="1">
+<li><p>C0每过一拍逻辑右移一位，若移出0，则允许后续指令进入流水线，再与C0按位“或”，形成新的冲突向量Ci；（根据禁止表F的允许等待时间，本例：2，3，4，7,就是C0中0的位置）</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516075945667.png" srcset="/img/loading.gif" lazyload alt="image-20240516075945667">
+<figcaption aria-hidden="true">image-20240516075945667</figcaption>
+</figure></li>
+<li><p>冲突向量C0经过移位后和后续指令（该指令仍然具备冲突向量C0特征)求或,得出新的冲突向量Ci</p></li>
+</ol>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516084027838.png" srcset="/img/loading.gif" lazyload alt="image-20240516084027838">
+<figcaption aria-hidden="true">image-20240516084027838</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><p>重复上一步骤，直到不再生成新的冲突向量为止。（特例：如果有个状态是全1，11111111。则需要隔9隔周期，即所有状态前加0，按011111111处理）</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516084147421.png" srcset="/img/loading.gif" lazyload alt="image-20240516084147421">
+<figcaption aria-hidden="true">image-20240516084147421</figcaption>
+</figure></li>
+</ol></li>
+<li><p>找出迫切循环</p>
+<p>简单循环—每个状态只出现一次的等待时间循环。</p>
+<p>迫切循环是指从各自初始状态输出的边缘都具有最小等待时间的简单循环，即平均等待时间比其他等待时间更小。</p>
+<p>平均间隔拍数，也称为平均启动距离</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516084510141.png" srcset="/img/loading.gif" lazyload alt="image-20240516084510141">
+<figcaption aria-hidden="true">image-20240516084510141</figcaption>
+</figure></li>
+</ul>
+<h4 id="超标量超流水">超标量/超流水</h4>
+<table>
+
+<thead>
+<tr class="header">
+<th>机器类型</th>
+<th><em>k</em>段流水线基准标量处理机</th>
+<th><em>m</em>度超标量处理机</th>
+<th><em>n</em>度超流水线处理机</th>
+<th>(<em>m</em>, <em>n</em>)度超标量超流水线处理机</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>机器流水线周期</td>
+<td>1个时钟周期</td>
+<td>1</td>
+<td>1/<em>n</em></td>
+<td>1/<em>n</em></td>
+</tr>
+<tr class="even">
+<td>同时发射指令条数</td>
+<td>1条</td>
+<td><em>m</em></td>
+<td>1</td>
+<td><em>m</em></td>
+</tr>
+<tr class="odd">
+<td>指令发射等待时间</td>
+<td>1个时钟周期</td>
+<td>1</td>
+<td>1/<em>n</em></td>
+<td>1/<em>n</em></td>
+</tr>
+<tr class="even">
+<td>指令级并行度（ILP）</td>
+<td>1</td>
+<td><em>m</em></td>
+<td><em>n</em></td>
+<td><em>m</em>×<em>n</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="多流水线调度">多流水线调度</h4>
+<p>顺序发射，资源相关</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516102305939.png" srcset="/img/loading.gif" lazyload alt="image-20240516102305939">
+<figcaption aria-hidden="true">image-20240516102305939</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516110725201.png" srcset="/img/loading.gif" lazyload alt="image-20240516110725201">
+<figcaption aria-hidden="true">image-20240516110725201</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516110732757.png" srcset="/img/loading.gif" lazyload alt="image-20240516110732757">
+<figcaption aria-hidden="true">image-20240516110732757</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516110739321.png" srcset="/img/loading.gif" lazyload alt="image-20240516110739321">
+<figcaption aria-hidden="true">image-20240516110739321</figcaption>
+</figure>
+<h2 id="五并行处理机">五、并行处理机</h2>
+<h4 id="并行性概念">并行性概念</h4>
+<p>在同一时刻或同一时间间隔内完成两种或两种以上的性质相同或不同的工作，只要在时间上相互重叠，均存在并行性。</p>
+<ul>
+<li><p>同时性：两个或多个事件在<strong>同一时刻</strong>发生的并行性</p></li>
+<li><p>并发性：两个或多个事件在<strong>同一时间间隔</strong>内发生的并行性</p></li>
+</ul>
+<h4 id="并行性等级">并行性等级</h4>
+<ul>
+<li><p>从执行角度</p>
+<ul>
+<li><p>指令内部并行：指令内部的微操作之间的并行</p></li>
+<li><p>指令间并行：并行执行两条或多条指令</p></li>
+<li><p>任务级或过程级并行：并行执行两个或多个过程或任务（程序段）</p></li>
+<li><p>作业或程序级并行：在多个作业或程序间的并行</p></li>
+</ul></li>
+<li><p>从数据处理角度</p>
+<ul>
+<li>字串位串：同时只对一个字的一位进行处理，不存在并行性</li>
+<li>字串位并：同时对一个字的所有位进行处理，</li>
+<li>字并位串：同时对多个字的同一位进行处理</li>
+<li>字并位并：同时对多个字的所有位或部分位进行同时处理</li>
+</ul></li>
+</ul>
+<h4 id="提高并行性的三条途径">提高并行性的三条途径</h4>
+<ul>
+<li><p>时间重叠</p>
+<ul>
+<li><p>流水线</p></li>
+<li><p>多个处理过程在时间上相互错开，轮流重叠使用同一套硬件的各个部件，以加快部件的周转而提高速度。时间重叠原则上不要求重复的硬件设备</p></li>
+</ul></li>
+<li><p>资源重复</p>
+<ul>
+<li>重复设置多个硬件部件以提高计算机系统的性能</li>
+</ul></li>
+<li><p>资源共享</p>
+<ul>
+<li>分时系统、分布式系统。利用软件方法，使多个用户分时使用同一个计算机系统。</li>
+</ul></li>
+</ul>
+<h4 id="并行处理机simd定义">并行处理机（SIMD）定义</h4>
+<p>多个处理部件按照一定方式互联，在同一个控制部件控制下，对各自的数据完成同一条指令规定的操作</p>
+<h4 id="单级互连函数">单级互连函数</h4>
+<ul>
+<li><p>交换互联网络（立方体单级网络）Cube</p>
+<ul>
+<li><p>出端编码与连接的入端结点的编码有一位相反</p>
+<p><span class="math inline">\(\mathrm{Cube_0=(b_2b_1b_0)~;~Cube_1=(b_2\overline{b_1}b_0)~;}\)</span></p></li>
+</ul></li>
+<li><p>全混洗网络 Perfect Shuffle</p>
+<ul>
+<li><p>把二进制结点号循环左移一位</p>
+<p><span class="math inline">\(S(x_{n-1}x_{n-2}\cdots
+x_1x_0)=x_{n-2}x_{n-3}\cdots x_1x_0x_{n-1}\)</span></p></li>
+<li><p>子混洗S<sub>(k)</sub>,最低k位循环左移一位</p>
+<p><span class="math inline">\(S_{\mathrm{(k)}}(\mathrm{x_{n-1}x_{n-2}\cdots
+x_{k}x_{k-1}x_{k-2}\cdots x_{1}x_{0}})=\mathrm{x_{n-1}x_{n-2}\cdots
+x_{k}x_{k-2}\cdots x_{1}x_{0}x_{k-1}}\)</span></p></li>
+<li><p>超混洗S<sup>(k)</sup>,最高k位循环左移一位</p>
+<p><span class="math inline">\(S^{(\mathrm{k})}(\mathrm{X_{n-1}X_{n-2}\cdots
+X_{n-k}X_{n-k-1}\cdots X_1X_0})=\mathrm{X_{n-2}\cdots
+X_{n-k}X_{n-1}X_{n-k-1}\cdots X_1X_0}\)</span></p></li>
+<li><p>逆混洗S<sup>-1</sup>,右移一位</p>
+<p><span class="math inline">\(S^{-1}(x_{n-1}x_{n-2}\cdots
+x_1x_0)=x_0x_{n-1}x_{n-2}\cdots x_1\)</span></p></li>
+</ul></li>
+<li><p>移数函数 PM2I</p>
+<ul>
+<li><p>输入端向量循环移动一定的位置</p>
+<p><span class="math inline">\(\begin{aligned}&amp;\mathrm{PM2I_{+i}(j)=(j+2^i)~mod~N;}\\&amp;\mathrm{n=log_2N,0\leq
+i\leq n-1,}\\&amp;\mathrm{PM2I_{-i}(j)=(j-2^i)~mod~N;\quad0\leq j\leq
+N-1}\end{aligned}\)</span></p></li>
+</ul></li>
+<li><p>蝶式函数 Butterfly</p>
+<ul>
+<li><p>最高位和最低位互换位置</p>
+<p><span class="math inline">\(B(x_{n-1}x_{n-2}\cdots
+x_1x_0)=x_0x_{n-2}\cdots x_1x_{n-1}\)</span></p></li>
+</ul></li>
+<li><p>反位序 Bit Reversal</p>
+<ul>
+<li><p>将二进制自变量的位序反过来</p>
+<p><span class="math inline">\(R(x_{n-1}x_{n-2}\cdots
+x_1x_0)=x_0x_1\cdots x_{n-2}x_{n-1}\)</span></p></li>
+</ul></li>
+</ul>
+<h4 id="多级互连网络">多级互连网络</h4>
+<h5 id="多级立方体网络staran">多级立方体网络STARAN</h5>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516134953200.png" srcset="/img/loading.gif" lazyload alt="image-20240516134953200">
+<figcaption aria-hidden="true">image-20240516134953200</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516135049249.png" srcset="/img/loading.gif" lazyload alt="image-20240516135049249">
+<figcaption aria-hidden="true">image-20240516135049249</figcaption>
+</figure>
+<h5 id="多级混洗交换网络omega网络">多级混洗交换网络（Omega网络）</h5>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516135938533.png" srcset="/img/loading.gif" lazyload alt="image-20240516135938533">
+<figcaption aria-hidden="true">image-20240516135938533</figcaption>
+</figure>
+<h4 id="多处理机mimd定义">多处理机（MIMD）定义</h4>
+<ul>
+<li>包含两个或两个以上功能大致相同的处理器；</li>
+<li>所有处理器共享一个公共内存；</li>
+<li>所有处理器共享I/O通道、控制器和外围设备；</li>
+<li>整个系统由统一的操作系统控制，在处理器和程序之间实现作业、任务、程序段、数组和数组元素等各级的全面并行。</li>
+</ul>
+<h4 id="互连网络">互连网络</h4>
+<h5 id="无阻塞交叉开关">无阻塞交叉开关</h5>
+<p>当不断增加总线数目时，使得每个存储器模块都有它自己单独可用的通路。由于每个存储器模块有其自己的总线，所以交叉开关实现了存储器模块的全连接。</p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516185143659.png" srcset="/img/loading.gif" lazyload alt="image-20240516185143659">
+<figcaption aria-hidden="true">image-20240516185143659</figcaption>
+</figure>
+<h5 id="多端口存储器">多端口存储器</h5>
+<p>把分布在交叉开关矩阵网络上的控制、转接、优先级仲裁等逻辑功能转移到存储器模块的接口上，就形成了多端口存储器系统。</p>
+<p><strong>多端口存储器可不使用互联网络</strong></p>
+<figure>
+<img src="/2024/05/17/Computer-System-Architecture-Review/image-20240516185204905.png" srcset="/img/loading.gif" lazyload alt="image-20240516185204905">
+<figcaption aria-hidden="true">image-20240516185204905</figcaption>
+</figure>
+<h4 id="多处理机系统的cache校验">多处理机系统的cache校验</h4>
+<ol type="1">
+<li><p>静态一致性校验</p>
+<p>基本思想是：只让该进程的<strong>独用信息（指令和操作数据）</strong>和<strong>共享只读信息</strong>进入本处理机的cache，而不准共享可写（即可修改）信息进入cache，让其只留在<strong>主存</strong>中。</p></li>
+<li><p>动态一致性校验</p>
+<p>基本思想是，在若干cache中使同一个信息（指令、数据）始终保持动态一致。</p>
+<p>•广播法</p>
+<p>•目录法</p></li>
+</ol>
+<h4 id="并行编译">并行编译</h4>
+<p>有下列表达式： Z=E+A*B*C/D+F</p>
+<p>利用普通串行编译算法，产生三元指令组为</p>
+<p>​ 1 *AB</p>
+<p>​ 2 *1C</p>
+<p>​ 3 /2D</p>
+<p>​ 4 +3E</p>
+<p>​ 5 +4F</p>
+<p>​ 6 =5Z</p>
+<p>指令间均相关，需5级运算。</p>
+<p>如采用并行编译算法可得：</p>
+<p>​ 1 *AB 2 /CD</p>
+<p>​ 3 *12 4 +EF</p>
+<p>​ 5 +34</p>
+<p>​ 6 =5Z</p>
+<p>1、2为第一级；3、4为第二级；5、6为第三级；</p>
+<p>分配给两个处理机，只需三级运算。</p>
+<h2 id="六集群网格云计算">六、集群、网格、云计算</h2>
+<h4 id="集群计算机分类">集群计算机分类</h4>
+<ul>
+<li>高可用性（High Availability）集群：致力于提供高度可靠的服务</li>
+<li>负载均衡（Load
+Balance）集群：使任务在集群中尽可能平均地分摊到不同的计算节点处理，提高对任务的处理效率</li>
+<li>高性能计算（High Performance
+Computing）集群：把一个问题的计算任务分配到多个计算节点上，利用这些计算节点的资源来完成任务，从而完成单机不能胜任的工作</li>
+</ul>
+<h4 id="mpi并行编程">MPI并行编程</h4>
+<p>最基本的MPI函数：</p>
+<p><strong>(1) MPI_Init(); 初始化MPI环境</strong></p>
+<p><strong>(2) MPI_Comm_size(); 获取进程数量</strong></p>
+<p><strong>(3) MPI_Comm_rank(); 获取本进程进程号</strong></p>
+<ol start="4" type="1">
+<li>MPI_Finalize(); 退出MPI环境</li>
+</ol>
+<p><strong>(5) MPI_Send(); 点对点发送信息</strong></p>
+<p><strong>(6) MPI_Recv(); 点对点接收信息</strong></p>
+<ol start="7" type="1">
+<li><p>MPI_Bcast()； 广播</p></li>
+<li><p>MPI_Reduce()； 规约</p></li>
+<li><p>MPI_Gather()； 收集</p></li>
+<li><p>MPI_Scatter()； 散发</p></li>
+<li><p>MPI_Barrier()； 同步</p></li>
+</ol>
+<h4 id="云计算特点">云计算特点</h4>
+<ol type="1">
+<li>超大规模和廉价性</li>
+<li>虚拟化</li>
+<li>高可靠性</li>
+<li>通用性</li>
+<li>高可扩展性（弹性）</li>
+<li>按需服务</li>
+</ol>
+<h2 id="简答">简答</h2>
+<ol type="1">
+<li><p>CISC &amp; RISC</p>
+<ul>
+<li><p>复杂指令系统CISC</p>
+<ul>
+<li>提供复杂指令来提高性能</li>
+<li>所含指令至少300条，甚至超过500条</li>
+<li>设计目的：用最少的机器语言指令来完成所需的计算任务</li>
+<li>使得硬件越来越复杂，<strong>造价相应提高</strong>，复杂的指令系统不但不容易实现，<strong>还可能降低性能</strong></li>
+</ul></li>
+<li><p>精简指令系统RISC</p>
+<ul>
+<li><p>只保留使用频率很高的少量指令</p></li>
+<li><p>其他复杂功能通过组合指令（子程序）实现</p></li>
+<li><p>提供一些必要的指令以支持OS和高级语言</p></li>
+<li><p>寻址方式不够灵活</p></li>
+</ul></li>
+</ul></li>
+<li><p>CUDA</p>
+<ul>
+<li>CUDA编程基于<strong>SIMD编程模型</strong>。执行核函数之前，用户需要（手动）将数据通过PCI-E通道由内存复制到显存中；核函数执行完毕后，用户再将运算后的数据由显存复制回主机的内存中。</li>
+<li>GPU上执行的代码称为<strong>核函数</strong>（kernel）</li>
+</ul>
+<p>CUDA线程的组织：</p>
+<ul>
+<li><p><strong>线程</strong>（Thread）：CUDA程序的基本执行单元。每个线程内的指令都会顺序执行。遵循SIMD编程模型，所有的线程都会执行相同的代码或相同代码的不同分支。理论上，所有的线程都是并行执行的，没有先后之分。</p></li>
+<li><p><strong>线程块</strong>（Block）：由一组线程组成。每个线程块内部线程之间可以进行协作，有可以共同访问的共享内存。</p>
+<p>CUDA程序执行时，每个线程块会在GPU上同一个SM中执行，每个线程块内的线程又会以线程束(Wrap)为单位，分组在SM中执行。线程束是GPU在执行时调度的最小单位。大小一般为32。</p></li>
+<li><p><strong>网格</strong>（Grid）：一组线程块的集合。网格里的线程块会被调度到GPU的多个SM上去执行。线程块之间没有同步机制，执行的先后顺序不确定。</p></li>
+</ul></li>
+<li><p>并行处理机</p>
+<p>多个处理部件按照一定方式互联，在同一个控制部件控制下，对各自的数据完成同一条指令规定的操作。</p>
+<ul>
+<li><p>在单机系统里主要是采用时间重叠技术。把一件工作按功能分割为若干相互联系的部分，把每一部分指定给专门的部件完成，然后按时间重叠原则把各部分执行过程在时间上重叠起来，使所有部件依次分工完成一组同样的工作。</p></li>
+<li><p>并行处理机主要是通过资源重复技术来实现并行处理的。它属于单指令流多数据流（SIMD）计算机一类。</p></li>
+<li><p>从控制部件角度看，指令是串行执行的</p></li>
+<li><p>从处理部件角度看，数据是并行处理的</p></li>
+</ul>
+<p><strong>提高并行性的三条途径</strong></p>
+<ul>
+<li><p>时间重叠</p>
+<ul>
+<li><p>流水线</p></li>
+<li><p>多个处理过程在时间上相互错开，轮流重叠使用同一套硬件的各个部件，以加快部件的周转而提高速度。时间重叠原则上不要求重复的硬件设备</p></li>
+</ul></li>
+<li><p>资源重复</p>
+<ul>
+<li>重复设置多个硬件部件以提高计算机系统的性能</li>
+</ul></li>
+<li><p>资源共享</p>
+<ul>
+<li>分时系统、分布式系统。利用软件方法，使多个用户分时使用同一个计算机系统。</li>
+</ul></li>
+</ul></li>
+<li><p>并行性等级</p>
+<ul>
+<li><p>从执行角度</p>
+<ul>
+<li><p>指令内部并行：指令内部的微操作之间的并行</p></li>
+<li><p>指令间并行：并行执行两条或多条指令</p></li>
+<li><p>任务级或过程级并行：并行执行两个或多个过程或任务（程序段）</p></li>
+<li><p>作业或程序级并行：在多个作业或程序间的并行</p></li>
+</ul></li>
+<li><p>从数据处理角度</p>
+<ul>
+<li><p>字串位串：同时只对一个字的一位进行处理，不存在并行性</p></li>
+<li><p>字串位并：同时对一个字的所有位进行处理，</p></li>
+<li><p>字并位串：同时对多个字的同一位进行处理</p></li>
+<li><p>字并位并：同时对多个字的所有位或部分位进行同时处理</p></li>
+</ul></li>
+</ul></li>
+<li><p>MPI</p>
+<p>集群计算机分类</p>
+<ul>
+<li><p>高可用性（High
+Availability）集群：致力于提供高度可靠的服务</p></li>
+<li><p>负载均衡（Load
+Balance）集群：使任务在集群中尽可能平均地分摊到不同的计算节点处理，提高对任务的处理效率</p></li>
+<li><p>高性能计算（High Performance
+Computing）集群：把一个问题的计算任务分配到多个计算节点上，利用这些计算节点的资源来完成任务，从而完成单机不能胜任的工作</p></li>
+</ul>
+<p>最基本的MPI函数：</p>
+<p><strong>(1) MPI_Init(); 初始化MPI环境</strong></p>
+<p><strong>(2) MPI_Comm_size(); 获取进程数量</strong></p>
+<p><strong>(3) MPI_Comm_rank(); 获取本进程进程号</strong></p>
+<ol start="4" type="1">
+<li>MPI_Finalize(); 退出MPI环境</li>
+</ol>
+<p><strong>(5) MPI_Send(); 点对点发送信息</strong></p>
+<p><strong>(6) MPI_Recv(); 点对点接收信息</strong></p></li>
+<li><p>虚拟存储系统</p>
+<p>虚拟存储器是指“主存-辅存”层次，它能使该层次具有辅存容量、接近主存的等效速度和辅存的每位成本，使程序员可以按比主存大得多的虚拟存储空间编写程序（即按虚存空间编址）</p>
+<p>Cache的主要作用是弥补主存和CPU之间的速度差距，因此它的管理部件是用硬件实现的，并对程序员透明。</p>
+<p>但虚拟存储器的主要作用是弥补主存和辅存之间的容量差距，因此它的管理部件基本上靠软件，适当结合硬件来实现，对系统程序员也不是透明的。</p></li>
+<li><p>流水技术特点</p>
+<ol type="1">
+<li>可以划分为若干互有联系的子过程（功能段）。每个功能段由专用功能部件实现。</li>
+<li>实现功能段所需的时间应尽可能相等，避免因不等产生处理瓶颈，造成“断流”。</li>
+<li>形成流水线处理，需要一段准备时间，称为“通过时间”。只有在此之后流水过程才能稳定。</li>
+<li>指令流不能顺序执行时，会使流水过程中断；再形成流水过程，则需经过一段时间。不应经常“断流”，否则效率不高。</li>
+<li>流水线技术适用于大量重复的程序过程，只有输入端能连续提供服务，流水线效率才能够得到充分发挥。</li>
+</ol></li>
+</ol>
+<p>8.并行存储器</p>
+<p>高位交叉</p>
+<ol type="1">
+<li><p>目的：扩大存储容量</p></li>
+<li><p>实现方法：用地址码的高位部分区分存储体号</p></li>
+<li><p>特点：</p>
+<ul>
+<li><p>具备并行工作的条件：每个存储模块有各自独立的控制部件，包括地址寄存器、地址译码器等，可以独立工作</p></li>
+<li><p>编址的连续性：由于程序的连续性和局部性，大部分情况下，指令序列和数据分布在同一个存储模块中。只有当指令序列跨越两个存储模块时，才能并行工作</p></li>
+<li><p><strong>扩大容量，未提高速度</strong></p></li>
+</ul></li>
+</ol>
+<p>低位交叉(多体交叉编址)</p>
+<ol type="1">
+<li>目的：提高存储器访问速度</li>
+<li>实现方法：用地址码的低位部分区分存储体号</li>
+<li>虽然多体并行主存系统和单体并行主存系统最大频宽可以相同，但多体地址可以灵活设置，只要是在不同分体中，就能得到比单体更高的频宽。因为程序常有转移出现，使得实际访问地址不一定均匀分布在交叉分体上，致使效率下降。统计表明，采用多体并行主存结构的计算机系统获得的实际频宽约是最大理想频宽的1/3。</li>
+<li>特点：
+<ul>
+<li>存储体的访问周期T<sub>m</sub>，由<em>n</em>个存储体构成的主存储器，各存储体的启动间隔
+$t=T_m/n$</li>
+<li>低位交叉存储器是一种采用<strong>分时工作</strong>工作的并行存储系统。在连续工作的情况下，保持每个存储体速度不变，则整个存储器速度可望提高<em>n</em>倍</li>
+</ul></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="category-chain-item">课程笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/" class="print-no-link">#计算机系统结构</a>
+      
+        <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%82%B9/" class="print-no-link">#期末复习知识点</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Computer System Architecture Review</div>
+      <div>http://example.com/2024/05/17/Computer-System-Architecture-Review/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lsl</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/27/Data-Base-2-Review/" title="Data Base 2 Review">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Data Base 2 Review</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Christian</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Christian</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,911 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lsl">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="五、规范化设计 函数依赖  数据库的规范化设计理论：数据依赖、范式、模式设计  核心作用：数据依赖 设计标准：范式  泛关系模式存在的问题：  数据冗余 修改&#x2F;插入&#x2F;删除异常   1NF,2NF,3NF,BCNF 无损分解  模式设计方法原则 表达性、分离性、最小冗余性  七、数据库设计 规划  输出：可行性分析报告+数据库系统规划纲要  需求分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Base 2 Review">
+<meta property="og:url" content="http://example.com/2024/05/27/Data-Base-2-Review/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="五、规范化设计 函数依赖  数据库的规范化设计理论：数据依赖、范式、模式设计  核心作用：数据依赖 设计标准：范式  泛关系模式存在的问题：  数据冗余 修改&#x2F;插入&#x2F;删除异常   1NF,2NF,3NF,BCNF 无损分解  模式设计方法原则 表达性、分离性、最小冗余性  七、数据库设计 规划  输出：可行性分析报告+数据库系统规划纲要  需求分析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/10/Ud4KM8RbvZ6ejp5.jpg">
+<meta property="article:published_time" content="2024-05-27T00:41:21.000Z">
+<meta property="article:modified_time" content="2024-09-10T10:51:55.787Z">
+<meta property="article:author" content="LSL">
+<meta property="article:tag" content="database2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/10/Ud4KM8RbvZ6ejp5.jpg">
+  
+  
+  
+  <title>Data Base 2 Review - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Christianlsl</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://s2.loli.net/2024/09/10/6YBsaQyqWg9SiN5.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Data Base 2 Review"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        lsl
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-27 08:41" pubdate>
+          2024年5月27日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Data Base 2 Review</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="五规范化设计">五、规范化设计</h3>
+<h4 id="函数依赖">函数依赖</h4>
+<ol type="1">
+<li><p>数据库的规范化设计理论：数据依赖、范式、模式设计</p>
+<ul>
+<li><p>核心作用：数据依赖</p></li>
+<li><p>设计标准：范式</p></li>
+</ul></li>
+<li><p>泛关系模式存在的问题：</p>
+<ul>
+<li>数据冗余</li>
+<li>修改/插入/删除异常</li>
+</ul></li>
+</ol>
+<h4 id="nf2nf3nfbcnf">1NF,2NF,3NF,BCNF</h4>
+<h4 id="无损分解">无损分解</h4>
+<ol type="1">
+<li><p>模式设计方法原则</p>
+<p>表达性、分离性、最小冗余性</p></li>
+</ol>
+<h3 id="七数据库设计">七、数据库设计</h3>
+<h4 id="规划">规划</h4>
+<ul>
+<li>输出：可行性分析报告+数据库系统规划纲要</li>
+</ul>
+<h4 id="需求分析">需求分析</h4>
+<ul>
+<li>输入：信息需求+处理需求</li>
+<li>输出：需求说明书</li>
+<li>步骤：
+<ol type="1">
+<li>分析用户活动，产生用户活动图（业务流程）</li>
+<li>确定系统范围，产生系统范围图（人机界面）</li>
+<li>分析用户活动所涉及的数据，产生数据流图DFD</li>
+<li>分析系统数据，产生数据字典DD</li>
+</ol></li>
+</ul>
+<h4 id="概念设计">概念设计</h4>
+<ul>
+<li>输入：DFD</li>
+<li>输出：分ER图 -&gt; 总ER图</li>
+<li>步骤：
+<ol type="1">
+<li>进行数据抽象,设计局部概念模式</li>
+<li>将局部概念模式综合成全局概念模式</li>
+<li>评审</li>
+</ol></li>
+</ul>
+<h4 id="逻辑设计">逻辑设计</h4>
+<ul>
+<li>输入：
+<ul>
+<li>独立于DBMS的概念模式</li>
+<li>处理需求</li>
+<li>约束条件</li>
+<li>DBMS特性</li>
+</ul></li>
+<li>输出：
+<ul>
+<li>DBMS可处理的模式</li>
+<li>子模式</li>
+<li>应用程序设计指南</li>
+<li>物理设计指南</li>
+</ul></li>
+<li>步骤：
+<ol type="1">
+<li>形成初始模式：ER 实体类型/联系类型 -&gt; 记录类型</li>
+<li>子模式设计：应用程序和数据库系统的<strong>接口</strong></li>
+<li>应用程序设计梗概：设计应用程序草图</li>
+<li>模式评价：
+<ul>
+<li>定量分析</li>
+<li>性能测量</li>
+</ul></li>
+<li>修正模式：使模式适应信息的不同表示</li>
+</ol></li>
+<li>ER-&gt;关系模型转换规则
+<ul>
+<li>1:1
+<ul>
+<li><strong>可以在</strong>任意一关系模式属性中加入另一方的键和联系属性</li>
+</ul></li>
+<li>1:N
+<ul>
+<li>N端加入1端的键和联系属性</li>
+</ul></li>
+<li>M:N
+<ul>
+<li>联系类型转换成关系</li>
+<li>属性为两端实体的键</li>
+</ul></li>
+<li>弱实体 1:N(弱实体)
+<ul>
+<li>1端键作为外键加入弱实体</li>
+<li>弱实体主键由父表主键和自身候选键组成</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="物理设计">物理设计</h4>
+<ul>
+<li>输入：基本数据模型</li>
+<li>输出：物理结构</li>
+<li>步骤：
+<ol type="1">
+<li>存储记录结构设计</li>
+<li>确定数据存放位置</li>
+<li>存取方法的设计</li>
+<li>完整性和安全性考虑</li>
+<li>程序设计</li>
+</ol></li>
+</ul>
+<h4 id="实现">实现</h4>
+<h4 id="运行和维护">运行和维护</h4>
+<h3 id="八数据库的管理">八、数据库的管理</h3>
+<h4 id="事务acid">事务ACID</h4>
+<h4 id="数据库恢复">数据库恢复</h4>
+<ol type="1">
+<li>恢复方法: 转储和建立日志</li>
+<li>故障:
+<ul>
+<li>事务故障</li>
+<li>系统故障</li>
+<li>介质故障</li>
+</ul></li>
+</ol>
+<h4 id="数据库并发两种锁活死锁可串行化">数据库并发（两种锁，活死锁，可串行化）</h4>
+<ol type="1">
+<li>并发操作的三个问题：
+<ul>
+<li>丢失更新</li>
+<li>读脏数据</li>
+<li>不一致分析</li>
+</ul></li>
+</ol>
+<h4 id="数据库完整性3静态1动态">数据库完整性（3静态，1动态）</h4>
+<ol type="1">
+<li><p>完整性：正确性、有效性、相容性</p></li>
+<li><p>完整性约束：</p>
+<ul>
+<li><p>域约束</p></li>
+<li><p>基本表约束</p>
+<p><code>FOREIGN KEY (..) REFERENCES TABLE(..)</code></p></li>
+<li><p>断言</p></li>
+<li><p>触发器：</p>
+<ul>
+<li>元组级触发器：<code>for each row</code></li>
+<li>语句级触发器</li>
+</ul></li>
+</ul></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span>  <span class="hljs-keyword">TRIGGER</span>  TRI_UPD_SC               <span class="hljs-comment">/*触发器的命名*/</span><br>  INSTEAD  <span class="hljs-keyword">OF</span>  <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> CNO  <span class="hljs-keyword">ON</span>  SC     <span class="hljs-comment">/*时间、事件、目标*/</span><br>  <span class="hljs-keyword">REFERENCING</span>                             <span class="hljs-comment">/*设置变量*/</span>   <br>    OLD_TABLE  <span class="hljs-keyword">AS</span>  OLDSTUFF         <span class="hljs-comment">/*为语句级触发器设置变量*/</span><br>    NEW_TABLE  <span class="hljs-keyword">AS</span>  NEWSTUFF<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br> <span class="hljs-keyword">WHEN</span> （<span class="hljs-number">50</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-keyword">ALL</span>（<span class="hljs-keyword">SELECT</span>  <span class="hljs-built_in">COUNT</span>(SNO)    <span class="hljs-comment">/*动作时间条件*/</span><br>    <span class="hljs-keyword">FROM</span> ((SC <span class="hljs-keyword">EXCEPT</span> OLDSTUFF) <span class="hljs-keyword">UNION</span> NEWSTUFF)<br>    <span class="hljs-keyword">GROUP</span>  <span class="hljs-keyword">BY</span>  CNO）））<br>  <span class="hljs-keyword">BEGIN</span> <span class="hljs-keyword">ATOMIC</span>                                 <span class="hljs-comment">/*动作体*/</span><br>    <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span>  SC                            <span class="hljs-comment">/*触发动作1*/</span><br>    <span class="hljs-keyword">WHERE</span> (SNO,CNO,GRADE) <span class="hljs-keyword">IN</span> OLDSTUFF; <br>    <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> SC                             <span class="hljs-comment">/*触发动作2*/</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> NEWSTUFF<br>  <span class="hljs-keyword">END</span>;<br><br></code></pre></td></tr></table></figure>
+<h4 id="数据库安全">数据库安全</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>,<span class="hljs-keyword">UPDATE</span>(PRICE) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">TO</span> WANG [<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION]<br><br><span class="hljs-keyword">REVOKE</span> .. <span class="hljs-keyword">ON</span> .. <span class="hljs-keyword">FROM</span> .. [CASCADE<span class="hljs-operator">|</span>RESTRICT]<br></code></pre></td></tr></table></figure>
+<h3 id="九分布式数据库系统">九、分布式数据库系统</h3>
+<h4 id="物理上分散逻辑上集中">物理上分散，逻辑上集中</h4>
+<ol type="1">
+<li>数据独立性：逻辑独立性+物理独立性</li>
+<li>分类：
+<ul>
+<li>同构同质型</li>
+<li>同构异质型：DBMS型号不同</li>
+<li>异构型</li>
+</ul></li>
+</ol>
+<h4 id="数据分片">数据分片</h4>
+<ul>
+<li>水平分片</li>
+<li>垂直分片</li>
+<li>导出分片（导出水平分片）：水平分片的条件不是本关系属性的条件，而是其他关系属性的条件</li>
+<li>混合分配，三种混合</li>
+</ul>
+<p>三条规则：</p>
+<ul>
+<li>完备性</li>
+<li>可重构</li>
+<li>不相交</li>
+</ul>
+<h4 id="数据分配">数据分配</h4>
+<ul>
+<li>集中式</li>
+<li>分割式：数据一份，分割成的每个逻辑片段被指派到特定场地</li>
+<li>全复制式：数据在每个场地重复存储</li>
+<li>混合式：介于分割式和全复制式。每个子集安置在一个或多个场地</li>
+</ul>
+<p>全局关系、逻辑片段、场地（物理映像）</p>
+<h3 id="十对象数据库系统">十、对象数据库系统</h3>
+<h4 id="对象联系图">对象联系图</h4>
+<ul>
+<li>平面关系模型：基本数据类型</li>
+<li>嵌套关系模型：基本数据类型、关系类型（集合）</li>
+<li>复合对象模型：基本数据类型、关系类型、结构类型（元组类型）</li>
+<li>面向对象：基本类型、复合类型、引用类型</li>
+</ul>
+<figure>
+<img src="/2024/05/27/Data-Base-2-Review/image-20240527132513389.png" srcset="/img/loading.gif" lazyload alt="image-20240527132513389">
+<figcaption aria-hidden="true">image-20240527132513389</figcaption>
+</figure>
+<ol type="1">
+<li><p>用ORDB的定义语言，定义这个数据库:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span>  TYPE  MyString  <span class="hljs-type">char</span>  <span class="hljs-type">varying</span>；<br><br><span class="hljs-keyword">CREATE</span>  <span class="hljs-keyword">TABLE</span>  department(university  MyString,<br>dname  MyString, <br>staff  setof(<span class="hljs-keyword">ref</span>(faculty)), <br>dire <span class="hljs-keyword">ref</span>(director));<br><br><span class="hljs-keyword">CREATE</span>  <span class="hljs-keyword">TABLE</span>  faculty(fno  <span class="hljs-type">integer</span>,fname MyString,  <br>languages  setof(MyString),<br>countries  setof(MyString),<br>works_for  <span class="hljs-keyword">ref</span>(department));<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> director(dno  <span class="hljs-type">integer</span>) Under  faculty;<br></code></pre></td></tr></table></figure></li>
+<li><p>检索精通俄语（Russian）的教师工号和姓名。 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>  fno, fname<br><span class="hljs-keyword">FROM</span>  faculty<br><span class="hljs-keyword">WHERE</span>  ‘Russian’  <span class="hljs-keyword">in</span>  languages;<br></code></pre></td></tr></table></figure></p></li>
+<li><p>检索上海地区各大学超过50岁的教师人数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>  A.uname，count（<span class="hljs-keyword">SELECT</span>  <span class="hljs-operator">*</span> <br>						<span class="hljs-keyword">FROM</span>  A.staff <span class="hljs-keyword">as</span> B<br>						<span class="hljs-keyword">WHERE</span>  B.age＞<span class="hljs-number">50</span>）<br><span class="hljs-keyword">FROM</span>  university  <span class="hljs-keyword">as</span> A<br><span class="hljs-keyword">WHERE</span>  A.city <span class="hljs-operator">=</span> ˊshanghaiˊ； <br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="tips">tips</h3>
+<ol type="1">
+<li>关系模式n个属性，可能的函数依赖4<sup>n</sup>个，平凡的函数依赖3<sup>n</sup>个，正确的调度n！个</li>
+<li>B的函数依赖要写B-&gt; Φ, B-&gt;B</li>
+<li>候选码为全码的关系模式一定是满足BCNF</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="category-chain-item">课程笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/database2/" class="print-no-link">#database2</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Data Base 2 Review</div>
+      <div>http://example.com/2024/05/27/Data-Base-2-Review/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lsl</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/30/hexo-publish-article/" title="hexo publish article">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">hexo publish article</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/17/Computer-System-Architecture-Review/" title="Computer System Architecture Review">
+                        <span class="hidden-mobile">Computer System Architecture Review</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Christian</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Christian</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
