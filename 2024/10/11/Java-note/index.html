@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/09/10/KCSQsrRmytBjb5G.jpg">
 <meta property="article:published_time" content="2024-10-11T05:35:23.000Z">
-<meta property="article:modified_time" content="2025-03-11T01:55:29.779Z">
+<meta property="article:modified_time" content="2025-04-22T02:22:06.488Z">
 <meta property="article:author" content="LSL">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
@@ -312,10 +312,10 @@ Unicode值）。如果到达流的末尾，返回 -1。</p></li>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">StreamTokenizer</span> <span class="hljs-variable">cin</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StreamTokenizer</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in)));<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">cout</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OutputStreamWriter</span>(System.out));<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nextInt();<br>        <span class="hljs-type">long</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> nextLong();<br>        <span class="hljs-type">double</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> nextDouble();<br>        cout.println(n);<br>        cout.println(m);<br>        cout.println(d);<br>        cout.flush();<br>      <br>        closeAll();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">nextInt</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        cin.nextToken();<br>        <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>) cin.nval;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">long</span> <span class="hljs-title function_">nextLong</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        cin.nextToken();<br>        <span class="hljs-keyword">return</span> (<span class="hljs-type">long</span>) cin.nval;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> <span class="hljs-title function_">nextDouble</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        cin.nextToken();<br>        <span class="hljs-keyword">return</span> cin.nval;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">nextString</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        cin.nextToken();<br>        <span class="hljs-keyword">return</span> cin.sval;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">closeAll</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        cout.close();<br>        in.close();<br>        out.close();<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
 <h3 id="多组输入">多组输入</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-type">StreamTokenizer</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StreamTokenizer</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in)));<br>    <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OutputStreamWriter</span>(System.out));<br><br>    <span class="hljs-keyword">while</span> (in.nextToken() != StreamTokenizer.TT_EOF)&#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) in.nval;<br>        in.nextToken();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) in.nval;<br>        out.println(n+<span class="hljs-string">&quot; &quot;</span>+m);<br>        out.flush();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="数组">数组</h3>
+<h2 id="数组">数组</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">dataType[] arrayRefVar = <span class="hljs-keyword">new</span> <span class="hljs-title class_">dataType</span>[arraySize];<br>dataType[][] arrayRefVar = <span class="hljs-keyword">new</span> <span class="hljs-title class_">dataType</span>[arraySize][arraySize];<br><br><span class="hljs-type">int</span>[] arr1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br><br>Arrays.fill(Type[] array, <span class="hljs-type">int</span> startIndex, <span class="hljs-type">int</span> endIndex, Type value) <span class="hljs-comment">//数组填充默认值</span><br><br>System.arraycopy(<span class="hljs-type">int</span>[] src, <span class="hljs-type">int</span> start1,<span class="hljs-type">int</span>[] dest, <span class="hljs-type">int</span> start2, length);<br><br><span class="hljs-type">int</span> new_array[] = Arrays.copyOf(dataType[] srcArray,<span class="hljs-type">int</span> new_length);<br></code></pre></td></tr></table></figure>
-<h3 id="哈希表">哈希表</h3>
-<h4 id="hashmap">HashMap</h4>
+<h2 id="哈希表">哈希表</h2>
+<h3 id="hashmap">HashMap</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;Integer, String&gt; map= <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;Integer, String&gt;();<br>map.put(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;string1&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> map.replace(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;Wiki&quot;</span>);<br><br>map.get(<span class="hljs-number">1</span>); <br><span class="hljs-comment">// 找不到，返回null</span><br>map.getOrDefault(Object key, V defaultValue)<br><span class="hljs-comment">// 找不到key，返回defaultValue</span><br><br><br><span class="hljs-comment">//遍历</span><br><span class="hljs-keyword">for</span> (Map.Entry&lt;Integer, String&gt; entry : map.entrySet()) &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> entry.getKey();<br>    <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> entry.getValue();<br>&#125;<br><span class="hljs-comment">// 迭代键</span><br><span class="hljs-keyword">for</span> (Integer key : map.keySet()) &#123;<br>    System.out.println(<span class="hljs-string">&quot;Key = &quot;</span> + key);<br>&#125;<br><span class="hljs-comment">// 迭代值</span><br><span class="hljs-keyword">for</span> (Integer value : map.values()) &#123;<br>    System.out.println(<span class="hljs-string">&quot;Value = &quot;</span> + value);<br>&#125;<br><br><span class="hljs-comment">//lambda遍历</span><br>map.forEach((key, value) -&gt; &#123;<br>    System.out.println(<span class="hljs-string">&quot;Key: &quot;</span> + key + <span class="hljs-string">&quot;, Value: &quot;</span> + value);<br>&#125;);<br></code></pre></td></tr></table></figure>
 <table>
 
@@ -409,7 +409,7 @@ value。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="hashset">HashSet</h4>
+<h3 id="hashset">HashSet</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">Set&lt;Integer&gt; hashset= <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;Integer&gt;();<br>hashset.add(<span class="hljs-number">1</span>);<br>hashset.contains(<span class="hljs-number">1</span>); <span class="hljs-comment">//判断元素是否存在</span><br>hashset.remove(<span class="hljs-number">1</span>);<br>hashset.clear();<br>hashset.size()<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> number : hashset) &#123;<br>    <span class="hljs-comment">//遍历</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="list">List</h3>
 <figure>
@@ -484,15 +484,19 @@ pollLast()</p>
 <li><p>比较器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//lambda</span><br>PriorityQueue&lt;Integer&gt; pq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;(((o1, o2) -&gt; &#123;<span class="hljs-keyword">return</span> o2 - o1;&#125;));<br><br><span class="hljs-comment">//常规写法</span><br>PriorityQueue&lt;Integer&gt; pq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparator</span>&lt;Integer&gt;() &#123;<br>	<span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(Integer o1, Integer o2)</span> &#123;<br>                <span class="hljs-keyword">return</span> o2 - o1;<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure></li>
 </ul>
+<h2 id="arrays">Arrays</h2>
+<h3 id="判断数组相等">判断数组相等</h3>
+<p><code>Arrays.equals(ary, ary1)</code></p>
 <h3 id="排序">排序</h3>
-<h4 id="arrays.sortscomparator">Arrays.sort（s[,Comparator]）</h4>
+<p><code>Arrays.sort（s[,Comparator]）</code></p>
 <ul>
 <li>针对数据类型（基本数据类型和引用对象类型）的数组元素</li>
 <li>自定义排序Comparator</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java">Comparator&lt;student&gt; comparatorAge =<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparator</span> &lt;student&gt;()&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(student p1,student p2)</span>&#123;<br>        <span class="hljs-keyword">if</span> (p1.getAge()&gt;p2.getAge())<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p1.getAge()&lt;p2.getAge())<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br><br>Arrays.sort(s,comparatorAge);<br></code></pre></td></tr></table></figure>
-<h4 id="collections">Collections</h4>
-<h5 id="collections.sortscomparator">Collections.sort(s[,Comparator])</h5>
+<h2 id="collections">Collections</h2>
+<h3 id="sort">sort</h3>
+<p><code>Collections.sort(s[,Comparator])</code></p>
 <ul>
 <li>针对集合框架中的动态数组，链表，树，哈希表等</li>
 <li>自定义排序Comparator</li>
@@ -504,13 +508,17 @@ pollLast()</p>
 <li>返回值等于0，则表示两个对象是相等的，它们的顺序无关紧要。</li>
 <li>返回值大于0，第一个对象（o1）排在第二个对象（o2）之后。</li>
 </ul>
-<h4 id="lambda表达式比较java-8">lambda表达式比较(Java 8)</h4>
+<h5 id="lambda表达式比较java-8">lambda表达式比较(Java 8)</h5>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Collections.sort(people, (p1, p2) -&gt; p1.getAge() - p2.getAge());<br></code></pre></td></tr></table></figure>
-<h4 id="collections.reverselist">Collections.reverse(list);</h4>
-<h4 id="collections.shufflelist">Collections.shuffle(list);</h4>
-<h4 id="collections.maxlistminlist">Collections.max(list)/min(list);</h4>
-<h4 id="collections.swaplist34">Collections.swap(list,3,4);</h4>
-<h3 id="string">String</h3>
+<h3 id="reverse">reverse</h3>
+<p><code>Collections.reverse(list);</code></p>
+<h3 id="shuffle">shuffle</h3>
+<p><code>Collections.shuffle(list);</code></p>
+<h3 id="max">max</h3>
+<p><code>Collections.max(list)/min(list);</code></p>
+<h3 id="swap">swap</h3>
+<p><code>Collections.swap(list,3,4);</code></p>
+<h2 id="string">String</h2>
 <ul>
 <li><p>s.length()</p>
 <p><strong>length不是方法，是数组的属性</strong></p>
@@ -538,7 +546,7 @@ pollLast()</p>
 <li><p>String trim()</p></li>
 <li><p>boolean isEmpty()</p></li>
 </ul>
-<h4 id="index">index</h4>
+<p><strong>index</strong></p>
 <ul>
 <li>int indexOf(int ch):
 返回指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回
@@ -549,15 +557,17 @@ pollLast()</p>
 <li>int indexOf(String str)</li>
 <li>int indexOf(String str, int fromIndex)</li>
 </ul>
-<h4 id="split">split</h4>
+<h3 id="split">split</h3>
 <p><code>public String[] split(String regex, int limit)</code></p>
 <ul>
 <li><strong>regex</strong> -- 正则表达式分隔符。</li>
 <li><strong>limit</strong> -- 分割的份数。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">str.split(<span class="hljs-string">&quot;-&quot;</span>, <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
-<h3 id="math">Math</h3>
-<p><code>Math.max()</code></p>
+<h2 id="math">Math</h2>
+<h3 id="math.max"><code>Math.max()</code></h3>
+<h3 id="math.powdouble-m-double-n"><code>Math.pow(double m, double n)</code></h3>
+<p>m^n</p>
 
                 
               </div>
